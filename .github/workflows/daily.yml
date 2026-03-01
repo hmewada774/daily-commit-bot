@@ -19,7 +19,7 @@ jobs:
       - name: Configure Git
         run: |
           git config user.name "CommitBot"
-          git config user.email "bot@users.noreply.github.com"
+          git config user.email "206253761+hmewada774@users.noreply.github.com"
 
       - name: Make 5 commits
         run: |
