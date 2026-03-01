@@ -2,7 +2,7 @@ name: Daily Auto Commit Bot
 
 on:
   schedule:
-    - cron: "44 1 * * *"   # Runs daily at 00:00 UTC
+    - cron: "48 1 * * *"   # Runs daily at 00:00 UTC
   workflow_dispatch:     # Allows manual run
 
 jobs:
