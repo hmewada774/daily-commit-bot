@@ -1,0 +1,35 @@
+name: Daily Auto Commit Bot
+
+on:
+  schedule:
+    - cron: "44 1 * * *"   # Runs daily at 00:00 UTC
+  workflow_dispatch:     # Allows manual run
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config user.name "CommitBot"
+          git config user.email "bot@users.noreply.github.com"
+
+      - name: Make 5 commits
+        run: |
+          for i in {1..5}
+          do
+            echo "Log entry $i - $(date)" >> log.txt
+            git add log.txt
+            git commit -m "Auto commit #$i - $(date)"
+          done
+
+      - name: Push changes
+        run: |
+          git push
